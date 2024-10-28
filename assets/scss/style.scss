@@ -506,19 +506,47 @@ $transition: 0.3s linear, filter 0.3s linear;
 .collection__ct{
   &--content{
     & .card{
+      cursor: pointer;
       border-radius: .6rem;
       overflow: hidden;
       box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;
-      &__video{
-        height: 100%;
+
+      & iframe{
+        width: 100%;
+       position: absolute;
+       left: 0;
+       bottom: 0;
+       z-index: -1;
       }
-      &__video, &__img{
-        & iframe, & img{
+       &__img{
+         & img{
           width: 100%;
           aspect-ratio: 16/9;
           object-fit: cover;
         }
       }
+        &__video{
+          &--cover{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Ajuste para centralização */
+            color: #ffffff97;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 4rem;
+            transition: .2s linear;
+            &:hover{
+              background-color: rgba(7, 12, 45, 0.5);
+              color: $light;
+            }
+          }
+          & img{
+            filter: brightness(50%);
+          }
+        }
       & .card__caption{
         &--title{
           display: -webkit-box;
