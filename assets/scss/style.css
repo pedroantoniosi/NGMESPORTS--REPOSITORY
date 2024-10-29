@@ -4,13 +4,13 @@
 }
 
 .pdef {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .pdef-x {
-  padding: 0 1rem 0 1rem;
+  padding: 0 0.5rem 0 0.5rem;
 }
 .pdef-y {
-  padding: 1rem 0 1rem 0;
+  padding: 0.5rem 0 0.5rem 0;
 }
 
 .text-dark {
@@ -329,7 +329,7 @@
 }
 
 .cars__ct--content .swiper__ct .card {
-  padding: 4rem;
+  padding: 2rem;
   display: flex;
   align-items: center;
 }
@@ -341,12 +341,21 @@
 .cars__ct--content .swiper__ct .card__caption {
   margin-top: auto;
 }
+.cars__ct--content .swiper__ct .card__caption--title {
+  font-size: max(1rem, 1.6vw);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.cars__ct--content .swiper__ct .card__caption--text {
+  font-size: max(0.8rem, 1.2vw);
+  font-weight: 300;
+}
 
-.userjoin__ct .card-wrapper {
+.userjoin__ct .wrapper {
   position: relative;
   z-index: 1;
 }
-.userjoin__ct .card-wrapper::before {
+.userjoin__ct .wrapper::before {
   content: " ";
   position: absolute;
   width: 100%;
@@ -355,17 +364,20 @@
   bottom: 0;
   z-index: -2;
 }
-.userjoin__ct .card-wrapper::before {
+.userjoin__ct .wrapper::before {
   background-image: url("/assets/img/background/background-2.webp");
   background-size: cover;
 }
-.userjoin__ct .card-wrapper .card .card-img {
+.userjoin__ct .wrapper .card .card__img {
   padding: 1rem;
   display: flex;
   border: 0.3rem solid #fff;
   border-radius: 1rem;
 }
-.userjoin__ct .card-wrapper .card .card-img img {
+.userjoin__ct .wrapper .card .card__img img {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 1rem;
   box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
   -webkit-user-select: none;
@@ -374,11 +386,12 @@
   -moz-user-select: none; /* Para Firefox */
   pointer-events: none; /* Para desativar eventos de mouse */
 }
-.userjoin__ct .card-wrapper .card .card-caption {
+.userjoin__ct .wrapper .card .card__caption {
   color: #fff;
 }
-.userjoin__ct .card-wrapper .card .card-caption .title {
-  font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
+.userjoin__ct .wrapper .card .card__caption--title {
+  font-size: clamp(1.5rem, 2vw + 0.5rem, 2.5rem);
+  text-align: center;
 }
 
 .exclusive__ct .exclusive__caption {
@@ -642,17 +655,29 @@ footer .nav-list .nav-link:hover {
     grid-column-start: 3;
     grid-row-start: 1;
   }
-  .userjoin__ct .card-wrapper {
+  .userjoin__ct .wrapper {
     padding: 4rem 0;
   }
-  .userjoin__ct .card-wrapper .card {
+  .userjoin__ct .wrapper .card {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
   }
+  .userjoin__ct .wrapper .card__caption {
+    background-color: red;
+  }
 }
 @media (min-width: 768px) {
+  .pdef {
+    padding: 1rem;
+  }
+  .pdef-x {
+    padding: 0 1rem 0 1rem;
+  }
+  .pdef-y {
+    padding: 1rem 0 1rem 0;
+  }
   .cars__ct .slider-card .caption {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
