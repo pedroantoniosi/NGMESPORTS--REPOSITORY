@@ -1,4 +1,9 @@
+@charset "UTF-8";
 @import './reset/reset.css';
+.card {
+  cursor: pointer;
+}
+
 .pdef {
   padding: 1rem;
 }
@@ -87,38 +92,36 @@
   color: #fff;
 }
 
-.cookies-container {
-  margin: 2rem 0rem;
+.cookies__ct {
+  display: none;
   position: fixed;
-  width: calc(100% - 2rem);
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  bottom: 2rem;
+  right: 50%;
+  transform: translateX(50%);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border-radius: 0.2rem;
   background-color: #fff;
   z-index: 9;
   border: 0.1rem solid #0000FF;
 }
-.cookies-container .title {
+.cookies__ct .cookies__caption--title {
+  max-width: 562px;
+  margin: 0 auto;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
 }
-.cookies-container .ico i {
-  cursor: pointer;
-  font-size: 1.4rem;
-}
-.cookies-container .btn {
-  width: 10rem;
+.cookies__ct .cookies__caption .btn__handler {
+  width: 6rem;
   cursor: pointer;
   border-radius: 0.2rem;
+  background-color: #fff;
+  color: #0000FF;
+  border: 0.1rem solid #0000FF;
+  font-weight: 500;
 }
-.cookies-container .accept-btn-handler {
+.cookies__ct .cookies__caption .btn__handler:hover {
   background-color: #0000FF;
   color: #fff;
-}
-.cookies-container .settings-btn-handler {
-  outline: 0.1rem solid #0000FF;
 }
 
 .navbar {
@@ -225,7 +228,7 @@
   display: grid;
   border-radius: 0.6rem;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
   height: 160px;
 }
 .news__ct--content .card::before {
@@ -236,6 +239,9 @@
   left: 0;
   bottom: 0;
   z-index: -2;
+}
+.news__ct--content .card:hover .card__caption .card__caption--title {
+  text-decoration: underline;
 }
 .news__ct--content .card::before {
   background-size: cover;
@@ -323,33 +329,18 @@
   background-color: transparent;
 }
 
-.cars__ct swiper-container {
-  height: -moz-fit-content;
-  height: fit-content;
-  cursor: pointer;
-}
-.cars__ct .slider-card {
+.cars__ct--content .swiper__ct .card {
+  padding: 4rem;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
-.cars__ct .slider-card img {
-  width: 40rem;
-  min-width: 20rem;
+.cars__ct--content .swiper__ct .card__img img {
+  margin-bottom: auto;
+  max-width: 768px;
+  width: 100%;
 }
-.cars__ct .slider-card .caption {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-rows: 1fr;
-  text-align: center;
-}
-.cars__ct .slider-card .caption .misc {
-  font-weight: 300;
-  font-size: 1.2rem;
-}
-.cars__ct .slider-card .caption .title {
-  font-size: 1rem;
-  font-weight: 500;
+.cars__ct--content .swiper__ct .card__caption {
+  margin-top: auto;
 }
 
 .userjoin__ct .card-wrapper {
@@ -378,6 +369,11 @@
 .userjoin__ct .card-wrapper .card .card-img img {
   border-radius: 1rem;
   box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
+  -webkit-user-select: none;
+          user-select: none; /* Para navegadores que suportam */
+  -webkit-user-drag: none; /* Para navegadores baseados em WebKit */
+  -moz-user-select: none; /* Para Firefox */
+  pointer-events: none; /* Para desativar eventos de mouse */
 }
 .userjoin__ct .card-wrapper .card .card-caption {
   color: #fff;
@@ -441,14 +437,38 @@
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;
 }
-.collection__ct--content .card__video {
-  height: 100%;
+.collection__ct--content .card iframe {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
 }
-.collection__ct--content .card__video iframe, .collection__ct--content .card__video img, .collection__ct--content .card__img iframe, .collection__ct--content .card__img img {
+.collection__ct--content .card__img img {
   width: 100%;
   aspect-ratio: 16/9;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.collection__ct--content .card__video--cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ajuste para centralização */
+  color: rgba(255, 255, 255, 0.5921568627);
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 4rem;
+  transition: 0.2s linear;
+}
+.collection__ct--content .card__video--cover:hover {
+  background-color: rgba(7, 12, 45, 0.5);
+  color: #fff;
+}
+.collection__ct--content .card__video img {
+  filter: brightness(50%);
 }
 .collection__ct--content .card .card__caption--title {
   display: -webkit-box;
