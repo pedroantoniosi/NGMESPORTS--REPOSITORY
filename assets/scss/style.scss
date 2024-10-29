@@ -497,6 +497,7 @@ $transition: 0.3s linear, filter 0.3s linear;
 .collection__ct{
   &--content{
     & .card{
+      cursor: pointer;
       border-radius: .6rem;
       overflow: hidden;
       box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;

@@ -433,6 +433,7 @@
 }
 
 .collection__ct--content .card {
+  cursor: pointer;
   border-radius: 0.6rem;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;
