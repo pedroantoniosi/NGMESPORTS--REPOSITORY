@@ -17,46 +17,53 @@
                 By clicking “Accept All Cookies”, you agree to the storing of cookies on your device to enhance site
                 navigation, analyze site usage, and assist in our marketing efforts.
             </h2>
-            <div class="row justify-center gap-05">
-                <button class="btn__handler p-1">Aceitar</button>
-                <button class="btn__handler p-1">Rejeitar</button>
+            <div class="btn__handler--list list row justify-center gap-05">
+                <button class="btn__handler btn__handler-true p-1">Aceitar</button>
+                <button class="btn__handler btn__handler-false p-1">Rejeitar</button>
             </div>
         </div>
     </section>
+     <!-- ----------------------------------------------- Novidades Sessão ------------------------------------------- -->
+      <nav id="navbar" class="navbar__ct row align-center gap-2">
+
+      </nav>    
     <!-- ----------------------------------------------- Novidades Sessão ------------------------------------------- -->
     <div class="news__ct">
-        <div class="header-caption header-caption-blue row-lg gap-05 justify-between align-center py-1">
-            <h2 class="title ms-4">Latest News</h2>
-            <img src="./assets/img/background/cc-white.webp" alt="">
+        <div class="header__caption header__caption--blue row align-center">
+            <h2 class="header__caption--title">News</h2>
         </div>
-        <div class="news__ct--content">
+        <div class="news__ct--content pdef">
             <div class="card row align-end">
-                <div class="card__img row justify-center">
+                <div class="card__img overflow-hidden row justify-center">
 
                 </div>
                 <div class="card__caption col gap-05 text-light">
-                    <h2 class="card__caption--title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ullam
-                        molestiae voluptas</h2>
+                    <h2 class="card__caption--title">NGM: Australia Highlights</h2>
                     <p class="card__caption--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque,
                         asperiores reiciendis. Dolores!</p>
+                        <span class="card__caption--misc">8 hours ago</span>
                 </div>
             </div>
-            <div class="card grid-auto-row-xl">
-                <div class="card__img row">
+
+
+            <div class="card">
+                <div class="card__img overflow-hidden row">
 
                 </div>
-                <div class="card__caption col justify-end gap-05">
+                <div class="card__caption col justify-end gap-05 mt-auto">
                     <span class="card__caption--ico"><svg width="20" height="20" viewBox="0 0 18 18" fill="none">
                             <path
                                 d="M16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0ZM11 14H4V12H11V14ZM14 10H4V8H14V10ZM14 6H4V4H14V6Z"
                                 fill="#0000FF"></path>
                         </svg></i></span>
-                    <h2 class="card__caption--title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
-                        soluta doloremque!</h2>
+                    <h2 class="card__caption--title">NGM: Australia Results</h2>
+                    <span class="card__caption--misc">8 hours ago</span>
                 </div>
             </div>
+
+
             <div class="card grid-auto-column">
-                <div class="card__img row">
+                <div class="card__img overflow-hidden row">
 
                 </div>
                 <div class="card__caption col justify-end gap-05">
@@ -65,11 +72,13 @@
                                 d="M16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0ZM11 14H4V12H11V14ZM14 10H4V8H14V10ZM14 6H4V4H14V6Z"
                                 fill="#0000FF"></path>
                         </svg></span>
-                    <h2 class="card__caption--title">Photos</h2>
+                    <h2 class="card__caption--title">Sim Race Program: Join our sim racing drive program and hit the
+                        track!</h2>
+                        <span class="card__caption--misc">8 hours ago</span>
                 </div>
             </div>
             <div class="card grid-auto-column">
-                <div class="card__img row">
+                <div class="card__img overflow-hidden row">
 
                 </div>
                 <div class="card__caption col justify-end gap-05">
@@ -78,8 +87,8 @@
                                 d="M16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0ZM11 14H4V12H11V14ZM14 10H4V8H14V10ZM14 6H4V4H14V6Z"
                                 fill="#0000FF"></path>
                         </svg></i></span>
-                    <h2 class="card__caption--title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-                        iure dolorem optio labore!</h2>
+                    <h2 class="card__caption--title">Stockcar 2024 Season</h2>
+                    <span class="card__caption--misc">8 hours ago</span>
                 </div>
             </div>
             <div class="card row align-end text-light">
@@ -102,9 +111,8 @@
 
     <!-- ----------------------------------------------- Slider dos carros ------------------------------------------- -->
     <section class="cars__ct">
-        <div class="header-caption header-caption-white row-lg justify-between align-center gap-05 py-1">
-            <h2 class="title ms-4">Our Cars</h2>
-            <img src="./assets/img/background/cc-blue.webp" alt="">
+        <div class="header__caption header__caption--white row align-center">
+            <h2 class="header__caption--title">Our Cars</h2>
         </div>
         <div class="cars__ct--content">
             <swiper-container class="swiper__ct" pagination="true">
@@ -113,14 +121,14 @@
                         <div class="card__img row justify-center">
                             <img src="./assets/img/cars/car-1.jpg" alt="">
                         </div>
-                        <div class="card__caption row gap-2">
+                        <div class="card__caption grid-2-sm gap-2">
                             <div class="col">
                                 <h3 class="card__caption--title">Classe</h3>
                                 <p class="card__caption--text">Open-Wheel</p>
                             </div>
                             <div class="col">
                                 <h3 class="card__caption--title">Engine</h3>
-                                   <p class="card__caption--text">V6 turbocharged</p>
+                                <p class="card__caption--text">V6 turbocharged</p>
                             </div>
                             <div class="col">
                                 <h3 class="card__caption--title">Power</h3>
@@ -138,7 +146,7 @@
                         <div class="card__img row justify-center">
                             <img src="./assets/img/cars/car-2.jpg" alt="">
                         </div>
-                        <div class="card__caption row gap-2">
+                        <div class="card__caption grid-2-sm gap-2">
                             <div class="col">
                                 <h3 class="card__caption--title">Classe</h3>
                                 <p class="card__caption--text">Open-Wheel</p>
@@ -163,7 +171,7 @@
                         <div class="card__img row justify-center">
                             <img src="./assets/img/cars/car-3.jpg" alt="">
                         </div>
-                        <div class="card__caption row gap-2">
+                        <div class="card__caption gap-2">
                             <div class="col">
                                 <h3 class="card__caption--title">Classe</h3>
                                 <p class="card__caption--text">Open-Wheel</p>
@@ -188,7 +196,7 @@
                         <div class="card__img row justify-center">
                             <img src="./assets/img/cars/car-4.jpg" alt="">
                         </div>
-                        <div class="card__caption row gap-2">
+                        <div class="card__caption grid-2-sm gap-2">
                             <div class="col">
                                 <h3 class="card__caption--title">Classe</h3>
                                 <p class="card__caption--text">Open-Wheel</p>
@@ -214,14 +222,14 @@
 
     <!-- ----------------------------------------------- Experiência Virtual ------------------------------------------- -->
     <section class="userjoin__ct">
-        <div class="header-caption header-caption-blue row-lg gap-1 justify-between align-center py-1">
-            <h2 class="title ms-4">Sim Race Experience</h2>
-            <img src="./assets/img/background/cc-white.webp" alt="">
+        <div class="header__caption header__caption--blue row align-center">
+            <h2 class="header__caption--title">Sim Racer Program</h2>
         </div>
         <div class="wrapper row-md justify-between">
             <div class="card pdef col gap-2">
                 <div class="card__caption col justify-center gap-2">
-                    <h2 class="card__caption--title">Join NGM e-Sports tutorials to refine your skills and excel on the track</h2>
+                    <h2 class="card__caption--title">Join NGM e-Sports tutorials to refine your skills and excel on the
+                        track</h2>
                     <a href="" class="btn-watch m-auto"><i class="bi bi-play-circle-fill mx-05"></i>Watch Now</a>
                 </div>
                 <div class="card__img">
@@ -232,9 +240,9 @@
     </section>
 
     <!-- ----------------------------------------------- Conteúdo Exclusivo ------------------------------------------- -->
-    <section class="exclusive__ct p-2">
+    <section class="exclusive__ct pdef">
         <a href="">
-            <div class="exclusive__caption text-center">
+            <div class="exclusive__caption row justify-center text-center">
                 <h2 class="exclusive__caption-title text-uppercase">Check Our Exclusive Content</h2>
             </div>
         </a>
@@ -243,81 +251,94 @@
     <!-- ----------------------------------------------- Galeria de Videos ------------------------------------------- -->
     <!-- <i class="bi bi-play-circle-fill"></i> -->
     <section class="collection__ct video__media__ct mb-1">
-        <div class="header-caption header-caption-white row-lg justify-between align-center gap-05 py-1">
-            <h2 class="title ms-4">Videos Gallery</h2>
-            <img src="./assets/img/background/cc-blue.webp" alt="">
+        <div class="header__caption header__caption--white row align-center">
+            <h2 class="header__caption--title">Videos</h2>
         </div>
         <div class="collection__ct--content grid-auto-column-lg gap-1 pdef-x">
-            <div class="card">
-                <div class="card__img">
-                    <img src="https://s1.dmcdn.net/v/XGCHC1d7p5VkDL-Ez/x240" alt="">
+
+             <a href="https://www.dailymotion.com/video/x985kr0">
+                <div class="card">
+                    <div class="card__img">
+                        <img src="https://s1.dmcdn.net/v/XGCHC1d7p5VkDL-Ez/x240" alt="">
+                    </div>
+                    <div class="card__caption col gap-05 p-1">
+                        <span class="ico"><i class="bi bi-images"></i></span>
+                        <h3 class="card__caption--title text-uppercase">IN PHOTOS: Australian Race Highlights</h3>
+                        <span>01/08/2024</span>
+                    </div>
                 </div>
-                <div class="card__caption col gap-05 p-1">
-                    <span class="ico"><i class="bi bi-images"></i></span>
-                    <h3 class="card__caption--title text-uppercase">IN PHOTOS: Australian Race Highlights</h3>
-                    <span>01/08/2024</span>
+            </a>
+
+            <a href="https://www.dailymotion.com/video/x985l0i">
+                <div class="card">
+                    <div class="card__img">
+                        <img src="https://s1.dmcdn.net/v/XGCMY1d7pmNyBZkip/x240" alt="">
+                    </div>
+                    <div class="card__caption col gap-05 p-1">
+                        <span class="ico"><i class="bi bi-images"></i></span>
+                        <h3 class="card__caption--title text-uppercase">IN PHOTOS: Our New Sponsor Star Strike</h3>
+                        <span>01/08/2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.dailymotion.com/video/x985l1q">
+                <div class="card">
+                    <div class="card__img">
+                        <img src="https://s1.dmcdn.net/v/XGCNE1d7pxtBMcOoU/x240" alt="">
+                    </div>
+                    <div class="card__caption col gap-05 p-1">
+                        <span class="ico"><i class="bi bi-images"></i></span>
+                        <h3 class="card__caption--title text-uppercase">IN PHOTOS: Showcase pics of WI-01</h3>
+                        <span>01/08/2024</span>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card__img">
-                    <img src="https://s1.dmcdn.net/v/XGCMY1d7pmNyBZkip/x240" alt="">
-                </div>
-                <div class="card__caption col gap-05 p-1">
-                    <span class="ico"><i class="bi bi-images"></i></span>
-                    <h3 class="card__caption--title text-uppercase">IN PHOTOS: Our New Sponsor Star Strike</h3>
-                    <span>01/08/2024</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card__img">
-                    <img src="https://s1.dmcdn.net/v/XGCNE1d7pxtBMcOoU/x240" alt="">
-                </div>
-                <div class="card__caption col gap-05 p-1">
-                    <span class="ico"><i class="bi bi-images"></i></span>
-                    <h3 class="card__caption--title text-uppercase">IN PHOTOS: Showcase pics of WI-01</h3>
-                    <span>01/08/2024</span>
-                </div>
-            </div>
-        </div>
+            </a>
     </section>
 
     <!-- ----------------------------------------------- Galeria de Fotos ------------------------------------------- -->
     <section class="collection__ct media__ct mb-1">
-        <div class="header-caption header-caption-white row-lg justify-between align-center gap-05 py-1">
-            <h2 class="title ms-4">Photos Gallery</h2>
-            <img src="./assets/img/background/cc-blue.webp" alt="">
+        <div class="header__caption header__caption--white row align-center">
+            <h2 class="header__caption--title">Photos</h2>
         </div>
         <div class="collection__ct--content grid-auto-column-lg gap-1 pdef-x">
-            <div class="card">
-                <div class="card__img">
-                    <img src="./assets/img/gallery/gal-1.jpg" alt="">
+            <a href="https://www.dailymotion.com/video/x985kr0">
+                <div class="card">
+                    <div class="card__img">
+                        <img src="./assets/img/gallery/gal-1.jpg" alt="">
+                    </div>
+                    <div class="card__caption col gap-05 p-1">
+                        <span class="ico"><i class="bi bi-images"></i></span>
+                        <h3 class="card__caption--title text-uppercase">IN PHOTOS: Australian Race Highlights</h3>
+                        <span>01/08/2024</span>
+                    </div>
                 </div>
-                <div class="card__caption col gap-05 p-1">
-                    <span class="ico"><i class="bi bi-images"></i></span>
-                    <h3 class="card__caption--title text-uppercase">IN PHOTOS: Australian Race Highlights</h3>
-                    <span>01/08/2024</span>
+            </a>
+            <a href="https://www.dailymotion.com/video/x985l0i">
+                <div class="card">
+                    <div class="card__img">
+                        <img src="./assets/img/gallery/gal-2.jpg" alt="">
+                    </div>
+                    <div class="card__caption col gap-05 p-1">
+                        <span class="ico"><i class="bi bi-images"></i></span>
+                        <h3 class="card__caption--title text-uppercase">IN PHOTOS: Our New Sponsor Star Strike</h3>
+                        <span>01/08/2024</span>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card__img">
-                    <img src="./assets/img/gallery/gal-2.jpg" alt="">
+            </a>
+            <a href="https://www.dailymotion.com/video/x985l1q">
+                <div class="card">
+                    <div class="card__img">
+                        <img src="./assets/img/gallery/gal-3.jpg" alt="">
+                    </div>
+                    <div class="card__caption col gap-05 p-1">
+                        <span class="ico"><i class="bi bi-images"></i></span>
+                        <h3 class="card__caption--title text-uppercase">IN PHOTOS: Showcase pics of WI-01</h3>
+                        <span>01/08/2024</span>
+                    </div>
                 </div>
-                <div class="card__caption col gap-05 p-1">
-                    <span class="ico"><i class="bi bi-images"></i></span>
-                    <h3 class="card__caption--title text-uppercase">IN PHOTOS: Our New Sponsor Star Strike</h3>
-                    <span>01/08/2024</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card__img">
-                    <img src="./assets/img/gallery/gal-3.jpg" alt="">
-                </div>
-                <div class="card__caption col gap-05 p-1">
-                    <span class="ico"><i class="bi bi-images"></i></span>
-                    <h3 class="card__caption--title text-uppercase">IN PHOTOS: Showcase pics of WI-01</h3>
-                    <span>01/08/2024</span>
-                </div>
-            </div>
+            </a>
         </div>
     </section>
 

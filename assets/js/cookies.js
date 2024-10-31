@@ -1,47 +1,48 @@
-// Função para definir cookies
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
-
-// Função para pegar um cookie pelo nome
-function getCookie(name) {
-    const nameEQ = name + "=";
-    const cookiesArray = document.cookie.split(';');
-    for (let i = 0; i < cookiesArray.length; i++) {
-        let cookie = cookiesArray[i].trim();
-        if (cookie.indexOf(nameEQ) === 0) {
-            return cookie.substring(nameEQ.length, cookie.length);
-        }
+// Utility function to manage cookies
+const cookieManager = {
+    set(name, value, days) {
+        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+    },
+    get(name) {
+        return document.cookie.split('; ').reduce((r, current) => {
+            const [key, value] = current.split('=');
+            return key === name ? decodeURIComponent(value) : r;
+        }, '');
+    },
+    checkConsent() {
+        return this.get('cookieConsent');
     }
-    return null;
-}
+};
 
-// Função para ocultar o banner de cookies
-function hideCookiesBanner() {
-    document.querySelector('.cookies-container').style.display = 'none';
-}
+// Function to display the cookie consent banner
+const showCookieBanner = () => {
+    const banner = document.querySelector('.cookies__ct');
+    banner.style.display = 'block';
+};
 
-// Manipulador do botão de "Aceitar"
-document.querySelector('.settings-btn-handler').addEventListener('click', function () {
-    setCookie('cookiesConsent', 'accepted', 365);
-    hideCookiesBanner(); // Oculta o banner
+// Event handlers
+const handleAccept = () => {
+    cookieManager.set('cookieConsent', 'accepted', 30);
+    hideBanner();
+};
+
+const handleReject = () => {
+    cookieManager.set('cookieConsent', 'rejected', 30);
+    hideBanner();
+};
+
+const hideBanner = () => {
+    const banner = document.querySelector('.cookies__ct');
+    banner.style.display = 'none';
+};
+
+// Initialize the cookie consent management
+document.addEventListener('DOMContentLoaded', () => {
+    if (!cookieManager.checkConsent()) {
+        showCookieBanner();
+    }
+
+    document.querySelector('.btn__handler-true').addEventListener('click', handleAccept);
+    document.querySelector('.btn__handler-false').addEventListener('click', handleReject);
 });
-
-// Manipulador do botão de "Rejeitar"
-document.querySelector('.accept-btn-handler').addEventListener('click', function () {
-    setCookie('cookiesConsent', 'rejected', 365);
-    hideCookiesBanner(); // Oculta o banner
-});
-
-// Verificar se o usuário já deu consentimento e controlar a exibição do banner
-
-
-const cookieConsent = getCookie('cookiesConsent');
-if (cookieConsent) {
-    hideCookiesBanner(); // Oculta o banner se o consentimento já foi dado
-} else {
-    document.querySelector('.cookies-container').style.display = 'block'; // Exibe o banner se não houver consentimento
-}

@@ -18,15 +18,13 @@ $transition: 0.3s linear, filter 0.3s linear;
   padding: .5rem;
 
   &-x {
-    padding: 0 .5rem 0 .5rem;
+    padding: .5rem;
   }
 
   &-y {
-    padding: .5rem 0 .5rem 0;
+    padding: .5rem;
   }
 }
-
-
 
 .text-dark {
   color: $dark;
@@ -43,6 +41,7 @@ $transition: 0.3s linear, filter 0.3s linear;
 .bg-light {
   background-color: $light;
 }
+
 
 @mixin pseudo-before() {
   position: relative;
@@ -90,34 +89,34 @@ $transition: 0.3s linear, filter 0.3s linear;
   }
 }
 
-
-.header-caption {
+.header__caption {
+  padding: 1rem 2rem;
   @include pseudo-before();
-  background-color: $primaryColor;
-  border-top: .2rem solid $primaryColor;
-
-  & .title {
-    flex: 1;
-    font-size: 1.6rem;
-    font-style: italic;
+  justify-content: center;
+  &::before{
+    background-repeat: no-repeat;
+    background-size: 130% 10%;
+    background-position: bottom center;
   }
-
-  & img {
-    max-width: 600px;
-    width: 100%;
-    height: 20px;
-  }
-
-  &-white {
-
-    color: $primaryColor;
-    border: none;
-    background-color: $light;
-  }
-
-  &-blue {
+  &.header__caption--blue{
     background-color: $primaryColor;
-    color: $light;
+    &::before{
+      background-image: url('/assets/img/background/cc-white.webp');
+      }
+      & .header__caption--title{
+        color: $light;
+        font-size: 1.8rem;
+      }
+  }
+  &.header__caption--white{
+    background-color: $light;
+    &::before{
+      background-image: url('/assets/img/background/cc-blue.webp');
+      }
+      & .header__caption--title{
+        color: $primaryColor;
+        font-size: 1.8rem;
+      }
   }
 }
 
@@ -149,7 +148,8 @@ $transition: 0.3s linear, filter 0.3s linear;
 }
 
 .cookies__ct {
-  display: none;
+  max-width: 380px;
+  width: calc(100% - 2rem);
   position: fixed;
   bottom: 2rem;
   right: 50%;
@@ -158,7 +158,7 @@ $transition: 0.3s linear, filter 0.3s linear;
   border-radius: .2rem;
   background-color: $light;
   z-index: 9;
-  border: .1rem solid $primaryColor;
+  border: .15rem solid $primaryColor;
   & .cookies__caption{
     &--title {
       max-width: 562px;
@@ -182,92 +182,31 @@ $transition: 0.3s linear, filter 0.3s linear;
   }
 }
 
+.ccc{
+  display: none;
+}
+
 // <!-- ------------------------------ Header -------------------------- -->
-.navbar {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & .logo,
-  .nav-toggle {
-    padding: 0 1rem;
-    font-size: 1.5rem;
+.navbar__ct{
+  background-color: $light;
+  color: $dark;
+  & .logo__ct{
+    width: 150px;
   }
-
-  & .nav-list {
-    display: none;
-
-    &.active {
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
-      width: 100%;
-      position: fixed;
-      height: 100dvh;
-      background-color: $primaryColor;
-      color: $light;
-      z-index: 8;
-      top: 0;
-
-      & .navbar-caption {
-        display: flex;
-        justify-content: space-between;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-      }
-
-      & .nav-li,
-      & .sign-container {
-        padding: 2rem 0 1rem 0;
-        border-bottom: 1px solid $light;
-
-        &>* {
-          font-weight: bold;
-        }
-
-        & .chev-ico {
-          transform: rotate(-90deg);
-        }
-
-        & .dropdown {
-          display: none;
-
-          & .btn-close {
-            cursor: pointer;
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-          }
-
-          &.active {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100dvh;
-            position: absolute;
-            gap: 1rem;
-            top: 0;
-            left: 0;
-            z-index: 9;
-            background-color: $accentColor;
-
-            & .droplink {
-              display: flex;
-              justify-content: center;
-              padding: 1rem 0;
-              outline: 1px solid $light;
-            }
-          }
-        }
+  &--list{
+    & .nav__link{
+      &--misc{
+        font-weight: 600;
+        font-size: 1.1rem;
       }
     }
-
-    & .nav-hide {
-      display: none;
-    }
+  }
+  & .auth__ct{
+    padding: 2rem;
+    flex: 0 1 auto;
+    background-color: #121A38;
+    height: 100%; /* ou um valor fixo */
+    color: $light;
   }
 }
 
@@ -281,10 +220,9 @@ $transition: 0.3s linear, filter 0.3s linear;
   }
 
   &--content {
-    padding: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .5rem;
 
     & .card {
       @include pseudo-before();
@@ -298,11 +236,35 @@ $transition: 0.3s linear, filter 0.3s linear;
         text-decoration: underline;
       }
 
-      &::before {
+      &::before{
+        filter: brightness(80%);
         background-size: cover;
         background-position: center;
-        filter: brightness(80%);
+        transition: .2s linear;
       }
+
+      &:hover {
+        &::before{
+          scale: 1.1;
+        }
+        & .card__img{
+          &::before{
+            scale: 1.1;
+          }
+        }
+      }
+
+      & .card__img{
+        &::before {
+          background-size: cover;
+          background-position: center;
+          transition: .2s linear;
+        }
+      }
+
+
+
+
 
       &__img {
         @include pseudo-before();
@@ -317,20 +279,18 @@ $transition: 0.3s linear, filter 0.3s linear;
           font-size: 1.2rem;
           display: -webkit-box;
           -webkit-line-clamp: 2;
-          /* Limita a duas linhas */
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
-        }
-
-        &--text {
-          font-size: .9rem;
         }
 
         &--ico{
           color: $primaryColor;
           width: 18ppx;
           height: 18px;
+        }
+        &--misc{
+          font-size: .8rem;
         }
       }
     }
@@ -349,14 +309,19 @@ $transition: 0.3s linear, filter 0.3s linear;
     }
 
     & .card:nth-of-type(2) {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
       & .card__img {
+        height: 100%;
         &::before {
           background-image: url('/assets/img/blog/blog-2.webp');
           background-size: cover;
         }
       }
       & .card__caption{
-
+        height: 100%;
       }
     }
 
@@ -414,24 +379,27 @@ $transition: 0.3s linear, filter 0.3s linear;
  &--content{
 & .swiper__ct{
   & .card{
-    padding: 2rem;
+    padding: 4rem .5rem;
     display: flex;
     align-items: center;
     &__img img{
       margin-bottom: auto;
       max-width: 768px;
       width: 100%;
+      object-fit: cover;
     }
     &__caption{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
       margin-top: auto;
       &--title{
-        font-size: max(1rem, 1.6vw);
+        font-size: clamp(1rem, 1rem + 1.5vw, 2.2vw);
         font-weight: 500;
         text-transform: uppercase;
 
       }
       &--text{
-        font-size: max(.8rem, 1.2vw);
+        font-size: clamp(.8rem, .5rem + 1vw, 1.2vw);
         font-weight: 300;
       }
     }
@@ -480,10 +448,10 @@ $transition: 0.3s linear, filter 0.3s linear;
   }
 }
 
-// <!-- ------------------------------ template -------------------------- -->
+// <!-- ------------------------------ exclusive -------------------------- -->
 .exclusive__ct {
   & .exclusive__caption{
-    padding: 4rem;
+    padding: max(2rem, 4vw);
     border: .2rem solid $primaryColor;
     background-color: $dark;
     @include pseudo-before();
@@ -498,13 +466,13 @@ $transition: 0.3s linear, filter 0.3s linear;
       opacity: .2;
     }
     &-title{
-      font-size: 2.5rem;
+      max-width: 768px;
+      font-size: clamp(1.4rem, 1.5rem + 1.5vw, 3vw);
     }
   }
 }
 
 // <!-- ------------------------------ collection -------------------------- -->
-
 .collection__ct{
   &--content{
    & .card{
@@ -580,7 +548,6 @@ footer {
 }
 
 @media (min-width: 1024px) {
-
   .navbar {
     display: grid;
     align-items: center;
@@ -681,12 +648,6 @@ footer {
   }
 
   .news__ct {
-    @include pseudo-before();
-    &::before {
-      background-image: url('/assets/img/background/background-1.webp');
-      background-size: cover;
-    }
-
     &--content {
       padding: 4rem 2rem;
       display: grid;
@@ -694,37 +655,7 @@ footer {
       grid-template-rows: max(12rem, 18vw) min(8rem, 12vw);
 
       & .card {
-        display: grid;
-        border-radius: .6rem;
-        overflow: hidden;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         height: auto;
-
-        &::before {
-          background-size: cover;
-          background-position: center;
-          filter: brightness(80%);
-        }
-
-        &__img {
-          width: 100%;
-          height: 100%;
-        }
-
-        &__caption {
-          &--title {
-            font-size: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-
-          &--text {
-            font-size: .8rem;
-          }
-        }
       }
 
       & .card:nth-of-type(1) {
@@ -732,7 +663,6 @@ footer {
         height: auto;
       }
       
-
       & .card:nth-of-type(3) {
         grid-column-start: 2;
         grid-row-start: 2;
@@ -758,9 +688,6 @@ footer {
         grid-auto-flow: column;
         grid-auto-columns: 1fr;
         grid-auto-rows: 1fr;
-        &__caption{
-          background-color: red;
-        }
       }
     }
 
@@ -769,7 +696,96 @@ footer {
 
 }
 
+@media (min-width: 576px){
+  .cars__ct {
+    &--content{
+   & .swiper__ct{
+     & .card{
+       padding: 4rem .5rem;
+       display: flex;
+       align-items: center;
+       &__img img{
+         margin-bottom: auto;
+         max-width: 768px;
+         width: 100%;
+         object-fit: cover;
+       }
+       &__caption{
+         display: grid;
+         grid-auto-flow: column;
+         grid-auto-rows: 1fr;
+         margin-top: auto;
+         &--title{
+           font-size: clamp(1rem, 1rem + 1.5vw, 2.2vw);
+           font-weight: 500;
+           text-transform: uppercase;
+   
+         }
+         &--text{
+           font-size: clamp(.8rem, .5rem + 1vw, 1.2vw);
+           font-weight: 300;
+         }
+       }
+     }
+   }
+    }
+   }
+}
+
 @media (min-width: 768px) {
+  .news__ct {
+    &--content{
+      gap: 1rem;
+
+      & .card:nth-of-type(2) {
+        display: grid;
+        grid-auto-flow: row;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 1fr;
+        & .card__img {
+          height: 100%;
+          &::before {
+            background-image: url('/assets/img/blog/blog-2.webp');
+            background-size: cover;
+          }
+        }
+        & .card__caption{
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .header__caption {
+    padding: 1rem 2rem;
+    @include pseudo-before();
+    justify-content: start;
+    &::before{
+      background-repeat: no-repeat;
+      background-size: 450px 40%;
+      background-position: right center;
+    }
+    &.header__caption--blue{
+      background-color: $primaryColor;
+      &::before{
+        background-image: url('/assets/img/background/cc-white.webp');
+        }
+        & .header__caption--title{
+          color: $light;
+          font-size: 1.8rem;
+        }
+    }
+    &.header__caption--white{
+      background-color: $light;
+      &::before{
+        background-image: url('/assets/img/background/cc-blue.webp');
+        }
+        & .header__caption--title{
+          color: $primaryColor;
+          font-size: 1.8rem;
+        }
+    }
+  }
   .pdef {
     padding: 1rem;
   
@@ -782,13 +798,44 @@ footer {
     }
   }
 
-  .cars__ct {
-    & .slider-card {
-      & .caption {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+
+  // <!-- ------------------------------ userjoin -------------------------- -->
+.userjoin__ct {
+  & .wrapper {
+    @include pseudo-before();
+
+    &::before {
+      background-image: url('/assets/img/background/background-2.webp');
+      background-size: cover;
+    }
+
+    & .card {
+      & .card__img {
+        padding: 1rem;
+        display: flex;
+        border: .3rem solid $light;
+        border-radius: 1rem;
+        & img {
+          aspect-ratio: 16/9;
+          object-fit: cover;
+          border-radius: 1rem;
+          box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
+          user-select: none; /* Para navegadores que suportam */
+          -webkit-user-drag: none; /* Para navegadores baseados em WebKit */
+          -moz-user-select: none; /* Para Firefox */
+          pointer-events: none; /* Para desativar eventos de mouse */
+        }
+      }
+
+      & .card__caption {
+        color: $light;
+
+        &--title {
+          font-size: clamp(1.5rem, 2vw +  0.5rem, 2.5rem);
+          text-align: center;
+        }
       }
     }
   }
-
+}
 }
