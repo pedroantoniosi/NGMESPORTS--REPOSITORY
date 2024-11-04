@@ -73,7 +73,7 @@ const navbarContent = `
 `
 const footer = document.getElementById('footer')
 const footerContent = `
-  <div class="row justify-between flex-wrap gap-1">
+  <div class="row justify-between flex-wrap gap-1 pdef">
             <ul class="nav-list row-lg gap-05">
                 <a href="">
                     <li class="nav-link">About</li>
@@ -158,5 +158,25 @@ document.querySelectorAll('.aaa').forEach(item => {
         // Mova o elemento clicado para o início da lista
         const container = document.querySelector('.container');
         container.insertBefore(this, container.firstChild); // Move o elemento clicado para o início
+    });
+});
+
+document.querySelectorAll('.gallery__ct .card').forEach(item => {
+    item.addEventListener('click', function() {
+        // Remove a classe .active de todos os cards
+        document.querySelectorAll('.gallery__ct .card').forEach(card => {
+            card.classList.remove('active');
+        });
+        // Adiciona a classe .active ao card clicado
+        item.classList.add('active');
+    });
+});
+
+document.querySelectorAll('.close__wrapper').forEach(item => {
+    item.addEventListener('click', function(event) {
+        event.stopPropagation();
+        document.querySelectorAll('.gallery__ct .card').forEach(card => {
+            card.classList.remove('active');
+        });
     });
 });

@@ -239,6 +239,7 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  height: calc(100svh - 68px);
 }
 .news__ct--content .card {
   position: relative;
@@ -370,6 +371,9 @@ body.no-scroll {
   background-color: transparent;
 }
 
+.cars__ct--content .swiper__ct {
+  height: calc(100svh - 68px);
+}
 .cars__ct--content .swiper__ct .card {
   padding: 4rem 0.5rem;
   display: flex;
@@ -388,12 +392,12 @@ body.no-scroll {
   margin-top: auto;
 }
 .cars__ct--content .swiper__ct .card__caption--title {
-  font-size: clamp(1rem, 1rem + 1.5vw, 2.2vw);
+  font-size: clamp(1.4rem, 1rem + 1.5vw, 2.2vw);
   font-weight: 500;
   text-transform: uppercase;
 }
 .cars__ct--content .swiper__ct .card__caption--text {
-  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2vw);
+  font-size: clamp(1rem, 0.5rem + 1vw, 1.2vw);
   font-weight: 300;
 }
 
@@ -414,16 +418,23 @@ body.no-scroll {
   background-image: url("/assets/img/background/background-2.webp");
   background-size: cover;
 }
+.userjoin__ct .wrapper .card {
+  height: calc(100svh - 68px);
+  justify-content: space-around;
+}
 .userjoin__ct .wrapper .card .card__img {
   padding: 1rem;
-  display: flex;
+  display: grid;
   border: 0.3rem solid #fff;
   border-radius: 1rem;
 }
 .userjoin__ct .wrapper .card .card__img img {
+  height: 100%;
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 1rem;
   box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
   -webkit-user-select: none;
@@ -628,6 +639,83 @@ footer .nav-list .nav-link:hover {
   transition: all 0.2s linear;
 }
 
+.gallery__ct {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #111;
+}
+.gallery__ct .card {
+  color: #fff;
+}
+.gallery__ct .card:hover .card__img img {
+  scale: 1.1;
+}
+.gallery__ct .card:hover .card__caption--title {
+  border-bottom: 1px solid #fff;
+}
+.gallery__ct .card__img {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.gallery__ct .card__img img {
+  transition: all 0.1s linear;
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.gallery__ct .card__caption--title {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+}
+.gallery__ct .card .wrapper {
+  display: none;
+}
+.gallery__ct .card.active .wrapper {
+  position: absolute;
+  display: flex;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.685);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.gallery__ct .card.active .wrapper .close__wrapper {
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 2rem;
+  color: #fff;
+  z-index: 9;
+}
+.gallery__ct .card.active .wrapper .swiper__ct {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  color: #fff !important;
+  font-size: 1.2rem;
+}
+.gallery__ct .card.active .wrapper .swiper__ct .card__swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #111;
+  font-size: 5rem;
+  z-index: -1;
+}
+
 @media (min-width: 1024px) {
   .navbar {
     display: grid;
@@ -754,6 +842,9 @@ footer .nav-list .nav-link:hover {
   }
 }
 @media (min-width: 576px) {
+  .cars__ct--content .swiper__ct {
+    height: auto;
+  }
   .cars__ct--content .swiper__ct .card {
     padding: 4rem 0.5rem;
     display: flex;
@@ -780,6 +871,34 @@ footer .nav-list .nav-link:hover {
   .cars__ct--content .swiper__ct .card__caption--text {
     font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2vw);
     font-weight: 300;
+  }
+  .gallery__ct {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1rem;
+    min-height: calc(100svh - 179px);
+  }
+  .gallery__ct .card.active .wrapper {
+    position: absolute;
+    display: flex;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.685);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+  .gallery__ct .card.active .wrapper .close__wrapper {
+    width: 50px;
+    padding: 0;
+    background-color: #fff;
+    color: #111;
+    top: 35px;
+    right: 30px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
   }
 }
 @media (min-width: 768px) {
@@ -899,6 +1018,9 @@ footer .nav-list .nav-link:hover {
   .userjoin__ct .wrapper::before {
     background-image: url("/assets/img/background/background-2.webp");
     background-size: cover;
+  }
+  .userjoin__ct .wrapper .card {
+    height: auto;
   }
   .userjoin__ct .wrapper .card .card__img {
     padding: 1rem;

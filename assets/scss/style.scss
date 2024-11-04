@@ -216,7 +216,7 @@ body.no-scroll {
   overflow: hidden;
 }
 
-// <!-- ------------------------------ Header -------------------------- -->
+// <!-- ------------------------------ Navbar  -------------------------- -->
 @media (max-width: 768px) {
   .navbar__ct {
     padding: 0 1rem;
@@ -314,6 +314,7 @@ body.no-scroll {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    height: calc(100svh - 68px);
 
     & .card {
       @include pseudo-before();
@@ -476,6 +477,8 @@ body.no-scroll {
 .cars__ct {
   &--content {
     & .swiper__ct {
+      height: calc(100svh - 68px);
+
       & .card {
         padding: 4rem .5rem;
         display: flex;
@@ -494,14 +497,14 @@ body.no-scroll {
           margin-top: auto;
 
           &--title {
-            font-size: clamp(1rem, 1rem + 1.5vw, 2.2vw);
+            font-size: clamp(1.4rem, 1rem + 1.5vw, 2.2vw);
             font-weight: 500;
             text-transform: uppercase;
 
           }
 
           &--text {
-            font-size: clamp(.8rem, .5rem + 1vw, 1.2vw);
+            font-size: clamp(1rem, .5rem + 1vw, 1.2vw);
             font-weight: 300;
           }
         }
@@ -521,15 +524,20 @@ body.no-scroll {
     }
 
     & .card {
+      height: calc(100svh - 68px);
+      justify-content: space-around;
+
       & .card__img {
         padding: 1rem;
-        display: flex;
+        display: grid;
         border: .3rem solid $light;
         border-radius: 1rem;
 
         & img {
+          height: 100%;
           aspect-ratio: 1/1;
           object-fit: cover;
+          object-position: center;
           border-radius: 1rem;
           box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
           user-select: none;
@@ -665,25 +673,28 @@ footer {
 }
 
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   background-color: $dark;
   color: $light;
-  & .wrapper--start{
+
+  & .wrapper--start {
     aspect-ratio: 16/9;
     padding: 1rem;
     border-radius: 1rem;
     overflow: hidden;
     @include pseudo-before();
-    &::before{
+
+    &::before {
       background-image: url('/assets/img/blog/blog-1.webp');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
     }
   }
-  & .wrapper--end{
+
+  & .wrapper--end {
     display: grid;
     grid-auto-flow: row;
     grid-auto-columns: 1fr;
@@ -691,36 +702,132 @@ footer {
     gap: 1rem;
     border-radius: 1rem;
     overflow: hidden;
-    & .card{
+
+    & .card {
       display: flex;
       padding: .5rem;
       border-bottom: .1rem solid $primaryColor;
       overflow: hidden;
-      &:hover{
+
+      &:hover {
         border-color: $light;
       }
-      &:hover .card__caption--title{
+
+      &:hover .card__caption--title {
         text-decoration: underline;
       }
-      &__img{
+
+      &__img {
         width: clamp(20rem, 2vw, 10vw);
         height: 100%;
-        & img{
+
+        & img {
           width: 100%;
           height: 100%;
           aspect-ratio: 1/1;
           object-fit: cover;
         }
       }
-      &__caption{
+
+      &__caption {
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
         color: $light;
-        &--title{
+
+        &--title {
           font-size: max(1rem, 1.4vw);
           font-weight: 400;
           transition: all .2s linear;
+        }
+      }
+    }
+  }
+}
+
+
+.gallery__ct {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: $dark;
+  & .card {
+    color: $light;
+    &:hover .card__img img {
+      scale: 1.1;
+    }
+
+    &:hover .card__caption--title {
+      border-bottom: 1px solid $light;
+    }
+
+    &__img {
+      border-radius: 1rem;
+      overflow: hidden;
+
+      & img {
+        transition: all .1s linear;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+    }
+
+    &__caption {
+      &--title {
+        width: fit-content;
+        font-size: 1.2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        border-bottom: 1px solid transparent;
+      }
+    }
+
+    & .wrapper {
+      display: none;
+    }
+
+    &.active {
+      & .wrapper {
+        position: absolute;
+        display: flex;
+        padding: 2rem;
+        background-color: rgba(0, 0, 0, 0.685);
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+        top: 0;
+        left: 0;
+
+        & .close__wrapper {
+          padding: 1rem;
+          display: grid;
+          place-items: center;
+          position: absolute;
+          top: 15px;
+          right: 25px;
+          font-size: 2rem;
+          color: $light;
+          z-index: 9;
+        }
+
+        & .swiper__ct {
+          width: 100%;
+          height: 100%;
+          border-radius: 1rem;
+          overflow: hidden;
+          color: $light !important;
+          font-size: 1.2rem;
+
+          & .card__swiper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: $dark;
+            font-size: 5rem;
+            z-index: -1;
+          }
         }
       }
     }
@@ -874,19 +981,19 @@ footer {
 
   }
 
-  .container{
+  .container {
     display: grid;
     grid-template-columns: 12fr 8fr;
     background-color: $dark;
   }
-
-
 }
 
 @media (min-width: 576px) {
   .cars__ct {
     &--content {
       & .swiper__ct {
+        height: auto;
+
         & .card {
           padding: 4rem .5rem;
           display: flex;
@@ -921,6 +1028,102 @@ footer {
       }
     }
   }
+
+  .gallery__ct {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1rem;
+    min-height: calc(100svh - 179px);
+   & .card {
+      &.active {
+        & .wrapper {
+          position: absolute;
+          display: flex;
+          padding: 2rem;
+          background-color: rgba(0, 0, 0, 0.685);
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          & .close__wrapper {
+            width: 50px;
+            padding: 0;
+            background-color: $light;
+            color: $dark;
+            top: 35px;
+            right: 30px;
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+    }
+  }
+
+  // .gallery__ct {
+  //   display: grid;
+  //   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  //   background-color: $dark;
+  //   gap: 2rem;
+
+  //   & .card {
+  //     padding: 1rem;
+  //     height: 100%;
+  //     height: 300px;
+  //     border-radius: 1rem;
+  //     aspect-ratio: unset;
+  //     & .wrapper {
+  //       display: none;
+  //     }
+
+  //     &.active {
+  //       & .wrapper {
+  //         position: absolute;
+  //         display: flex;
+  //         padding: 10rem;
+  //         background-color: rgba(0, 0, 0, 0.685);
+  //         width: 100%;
+  //         height: 100%;
+  //         overflow: hidden;
+  //         z-index: 1;
+  //         top: 0;
+  //         left: 0;
+
+  //         & .close__wrapper {
+  //           padding: 1rem;
+  //           display: grid;
+  //           place-items: center;
+  //           position: absolute;
+  //           top: 0;
+  //           right: 0;
+  //           font-size: 3rem;
+  //           color: $light;
+  //         }
+
+  //         & .swiper__ct {
+  //           width: 100%;
+  //           height: 100%;
+  //           border-radius: 1rem;
+  //           overflow: hidden;
+  //           color: $light !important;
+  //           font-size: 1.2rem;
+
+  //           & .card__swiper {
+  //             display: flex;
+  //             justify-content: center;
+  //             align-items: center;
+  //             height: 100%;
+  //             background-color: $dark;
+  //             font-size: 5rem;
+  //             z-index: -1;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 @media (min-width: 768px) {
@@ -1054,6 +1257,8 @@ footer {
       }
 
       & .card {
+        height: auto;
+
         & .card__img {
           padding: 1rem;
           display: flex;
@@ -1088,4 +1293,3 @@ footer {
     }
   }
 }
-
