@@ -1,11 +1,11 @@
 const navbar = document.getElementById('navbar')
 const navbarContent = `
     <a href="/index.html">
-         <div class="logo__ct">
+         <div class="logo__ct d-grid place-center">
             <img src="/assets/img/logos/NGM.png" alt="">
         </div>
     </a>
-            <ul class="navbar__ct--list row align-center gap-2">
+            <ul class="navbar__ct--list row gap-2">
                 <a href="/assets/pages/news.html">
                     <li class="nav__link">
                         <span class="nav__link--misc">Latest</span>
@@ -16,12 +16,12 @@ const navbarContent = `
                     <span class="nav__link--misc">Team</span>
                   <i class="bi bi-chevron-down"></i>
                     </div>
-                    <ul class="nav__dropdown ccc">
-                        <a href="">
-                            <li class="nav__link--droplink">Drivers</li>
+                    <ul class="nav__dropdown row">
+                        <a href="/assets/pages/about.html">
+                            <li class="nav__dropdown--droplink">About</li>
                         </a>
-                        <a href="">
-                            <li class="nav__link--droplink">Droplink</li>
+                        <a href="/assets/pages/drivers.html">
+                            <li class="nav__dropdown--droplink">Drivers</li>
                         </a>
                 
                     </ul>
@@ -31,22 +31,22 @@ const navbarContent = `
                     <span class="nav__link--misc">2024</span>
                   <i class="bi bi-chevron-down"></i>
                     </div>
-                    <ul class="nav__dropdown ccc">
-                        <a href="">
-                            <li class="nav__link--droplink">Our Team</li>
+                    <ul class="nav__dropdown row">
+                        <a href="/assets/pages/cars.html">
+                            <li class="nav__dropdown--droplink">Cars</li>
                         </a>
-                        <a href="">
-                            <li class="nav__link--droplink">Our Cars</li>
+                         <a href="/assets/pages/standings.html">
+                            <li class="nav__dropdown--droplink">Standings</li>
                         </a>
-                        <a href="">
-                            <li class="nav__link--droplink">Sim Racer Program</li>
+                        <a href="/assets/pages/program.html">
+                            <li class="nav__dropdown--droplink">Sim Racer Program</li>
                         </a>
-                        <a href="">
-                            <li class="nav__link--droplink">Exclusive Content</li>
+                        <a href="/assets/pages/exclusive.html">
+                            <li class="nav__dropdown--droplink">Exclusive Content</li>
                         </a>
                     </ul>
                 </li>
-                <a href="./assets/pages/media.html">
+                <a href="/assets/pages/media.html">
                             <li class="nav__link">
                     <span class="nav__link--misc">Media</span>
                 </li>
@@ -54,12 +54,12 @@ const navbarContent = `
 
           
 
-                <div class="auth__ct">
+                <div class="auth__ct nav__link position-relative">
                     <div class=" row gap-1">
                         <i class="bi bi-person-circle"></i>
                         <h4 class="auth__ct--title text-uppercase">Good Morning</h4>
                     </div>
-                    <div class="auth__buttons col ccc">
+                    <div class="nav__dropdown auth__buttons col gap-1">
                         <div class="btn__auth">Sign Up</div>
                         <div class="btn__auth">Login</div>
                     </div>
@@ -75,20 +75,20 @@ const footer = document.getElementById('footer')
 const footerContent = `
   <div class="row justify-between flex-wrap gap-1 pdef">
             <ul class="nav-list row-lg gap-05">
-                <a href="">
+                <a href="/assets/pages/about.html">
                     <li class="nav-link">About</li>
                 </a>
-                <a href="">
+                 <a href="/assets/pages/drivers.html">
+                    <li class="nav-link">Drivers</li>
+                </a>
+                 <a href="/assets/pages/2024.html">
+                    <li class="nav-link">2024</li>
+                </a>
+                <a href="/assets/pages/media.html">
                     <li class="nav-link">Media</li>
                 </a>
-                <a href="">
-                    <li class="nav-link">Videos</li>
-                </a>
-                <a href="">
+                <a href="/assets/pages/program.html">
                     <li class="nav-link">Driving Program</li>
-                </a>
-                <a href="">
-                    <li class="nav-link">Contact Us</li>
                 </a>
                 <a href="">
                     <li class="nav-link">Privacy Police</li>
@@ -98,7 +98,7 @@ const footerContent = `
                 </a>
             </ul>
             <ul class="nav-list row gap-1">
-                <a href="">
+                <a href="https://www.instagram.com/ngmracingteam/">
                     <li class="nav-link"><i class="bi bi-instagram ico"></i></li>
                 </a>
                 <a href="">
@@ -135,30 +135,38 @@ toggleButton.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav__link--dropdown');
 
-    navLinks.forEach((navlink) => {
-        navlink.onclick = function () {
-            const dropdown = navlink.querySelector('.nav__dropdown').classList.toggle('active')
+    navLinks.forEach(navlink => {
+        navlink.onclick = (event) => {
+            event.stopPropagation();
+    
+            // Alterna o estado ativo do dropdown do navlink clicado
+            navlink.classList.toggle('active');
+            navlink.querySelector('.nav__dropdown')?.classList.toggle('active');
+    
+            // Remove a classe 'active' de todos os outros navlinks e dropdowns
+            navLinks.forEach(otherLink => {
+                if (otherLink !== navlink) {
+                    otherLink.classList.remove('active');
+                    otherLink.querySelector('.nav__dropdown')?.classList.remove('active');
+                }
+            });
         };
+    
+        // Impede que o clique no dropdown feche o menu
+        navlink.querySelector('.nav__dropdown')?.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
     });
-});
-
-
-
-document.querySelectorAll('.aaa').forEach(item => {
-    item.addEventListener('click', function() {
-        // Se houver um elemento ativo, remova a classe
-        const activeElement = document.querySelector('.aaa.active');
-        if (activeElement) {
-            activeElement.classList.remove('active');
-        }
-        
-        // Adicione a classe active ao elemento clicado
-        this.classList.add('active');
-
-        // Mova o elemento clicado para o início da lista
-        const container = document.querySelector('.container');
-        container.insertBefore(this, container.firstChild); // Move o elemento clicado para o início
+    
+    // Remove 'active' de todos ao clicar fora dos navlinks
+    document.addEventListener('click', () => {
+        navLinks.forEach(navlink => {
+            navlink.classList.remove('active');
+            navlink.querySelector('.nav__dropdown')?.classList.remove('active');
+        });
     });
+    
+    
 });
 
 document.querySelectorAll('.gallery__ct .card').forEach(item => {
@@ -180,3 +188,5 @@ document.querySelectorAll('.close__wrapper').forEach(item => {
         });
     });
 });
+
+
